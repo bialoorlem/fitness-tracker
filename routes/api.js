@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Workout = require("../models/workout.js");
 
 router.post("/api/workouts", (req, res) => {
+  console.log("connected to post")
   Workout.create({})
     .then(dbWorkout => {
       res.json(dbWorkout);
@@ -14,6 +15,8 @@ router.post("/api/workouts", (req, res) => {
 // create a put route for /api/workouts/:id that updates the workout
 
 router.put("/api/workouts/:id", ({body, params}, res) => {
+  console.log("connected to put")
+  console.log(body)
   Workout.findByIdAndUpdate(
     params.id,
     {
@@ -22,6 +25,7 @@ router.put("/api/workouts/:id", ({body, params}, res) => {
     { new: true, runValidators: true }
   )
     .then(dbWorkout => {
+      console.log("after promise")
       res.json(dbWorkout);
     })
     .catch(err => {
