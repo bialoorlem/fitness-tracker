@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Workout = require("../models/workout.js");
 
-router.post("/api/workouts", (req, res) => {
+router.post("/api/workouts", (req,res) => {
   console.log("connected to post")
   Workout.create({})
     .then(dbWorkout => {
@@ -68,6 +68,8 @@ router.delete("/api/workouts", ({body}, res) => {
       res.json(err);
     });
 });
+
+
 
 
 module.exports = router;
